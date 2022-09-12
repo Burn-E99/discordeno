@@ -1,4 +1,4 @@
-import { API_VERSION, BASE_URL, baseEndpoints } from "../util/constants.ts";
+import { API_VERSION, baseEndpoints, BASE_URL } from "../util/constants.ts";
 import { RequestMethod, RestRequestRejection, RestRequestResponse } from "./rest.ts";
 import { RestManager } from "./restManager.ts";
 
@@ -14,12 +14,10 @@ export async function runMethod<T = any>(
   },
 ): Promise<T> {
   rest.debug(
-    `[REST - RequestCreate] Method: ${method} | URL: ${route} | Retry Count: ${
-      options?.retryCount ?? 0
-    } | Bucket ID: ${options?.bucketId} | Body: ${
-      JSON.stringify(
-        body,
-      )
+    `[REST - RequestCreate] Method: ${method} | URL: ${route} | Retry Count: ${options?.retryCount ?? 0
+    } | Bucket ID: ${options?.bucketId} | Body: ${JSON.stringify(
+      body,
+    )
     }`,
   );
 
@@ -33,9 +31,10 @@ export async function runMethod<T = any>(
       },
       method,
     });
+    console.log(resultt)
 
     if (!result.ok) {
-      const err = await result.json().catch(() => {});
+      const err = await result.json().catch(() => { });
       throw new Error(`Error: ${err.message ?? result.statusText}`);
     }
 

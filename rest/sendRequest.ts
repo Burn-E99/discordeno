@@ -29,8 +29,9 @@ export async function sendRequest<T>(rest: RestManager, options: RestSendRequest
         body: options.payload?.body,
       },
     );
-    rest.fetched(options, response);
     console.log(response)
+    console.log(response.body)
+    rest.fetched(options, response);
 
     const bucketIdFromHeaders = rest.processRequestHeaders(
       rest,

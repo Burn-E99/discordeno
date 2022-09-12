@@ -31,7 +31,8 @@ export async function runMethod<T = any>(
       },
       method,
     });
-    console.log(resultt)
+    console.log(result)
+    console.log(result.body)
 
     if (!result.ok) {
       const err = await result.json().catch(() => { });
